@@ -17,9 +17,8 @@ RUN pip3 install ninja
 
 RUN pip3 install torch torchvision
 
-RUN echo 'alias python=python3' >> ~/.bashrc && echo 'alias pip=pip3' >> ~/.bashrc 
-
-RUN /bin/bash -c "source ~/.bashrc"
+RUN update-alternatives --install /usr/bin/python python /usr/bin/python3 1
+RUN update-alternatives --install /usr/bin/pip pip /usr/bin/pip3 1
 
 
 
