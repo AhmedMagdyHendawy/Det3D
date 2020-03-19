@@ -24,8 +24,8 @@ RUN cd /
 
 RUN apt install libssl-dev -y
 RUN apt remove cmake cmake-data -y
-RUN git clone https://github.com/Kitware/CMake.git && cd CMake && git checkout v3.16.3
-RUN chmod +x bootstrap && ./bootstrap --prefix=/usr && make && make install
+RUN git clone https://github.com/Kitware/CMake.git && cd CMake && git checkout v3.16.3 && \
+ chmod +x bootstrap && ./bootstrap --prefix=/usr && make && make install
 
 Run cd /
 
@@ -33,14 +33,13 @@ RUN git clone https://github.com/NVIDIA/apex && cd apex && pip install -v --no-c
 
 RUN cd /
 
-RUN apt-get install libboost-all-dev
+RUN apt-get install -y libboost-all-dev
 RUN git clone https://github.com/traveller59/spconv.git --recursive && cd spconv && git checkout 7342772 && python setup.py bdist_wheel && cd ./dist && pip install *
 
 RUN cd /
 
-RUN apt-get install -y python-pytest
-RUN pip install flake8 && pip install pygments
-RUN git clone https://github.com/poodarchu/nuscenes.git && cd nuscenes && python setup.py install
+RUN apt-get install -y python-setuptools
+RUN pip install pytest && pip install flake8 && pip install pygments && git clone https://github.com/poodarchu/nuscenes.git && cd nuscenes && python setup.py install
 
 RUN cd /
 
