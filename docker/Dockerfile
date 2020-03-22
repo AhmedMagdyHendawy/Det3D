@@ -27,7 +27,7 @@ RUN apt remove cmake cmake-data -y
 RUN git clone https://github.com/Kitware/CMake.git && cd CMake && git checkout v3.16.3 && \
  chmod +x bootstrap && ./bootstrap --prefix=/usr && make && make install
 
-Run cd /
+RUN cd /
 
 RUN git clone https://github.com/NVIDIA/apex && cd apex && pip install -v --no-cache-dir --global-option="--cpp_ext" --global-option="--cuda_ext" ./
 
